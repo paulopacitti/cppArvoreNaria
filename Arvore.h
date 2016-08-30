@@ -8,6 +8,7 @@ class Arvore
 {
     public:
         Arvore(int tamanho) throw();
+        No* raiz;
         virtual ~Arvore();
         void incluir(Elemento* e)throw();
         bool excluir(Elemento* e) throw();
