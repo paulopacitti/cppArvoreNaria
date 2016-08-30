@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1472211702 source:f:\cotuca\6o semestre\tópicos em estruturas de dados\Árvores n-árias\arvorebinaria\elemento.cpp
+	"Elemento.h"
+
+1472211644 f:\cotuca\6o semestre\tópicos em estruturas de dados\Árvores n-árias\arvorebinaria\elemento.h
+
+1385313278 source:f:\cotuca\6o semestre\tópicos em estruturas de dados\Árvores n-árias\arvorebinaria\main.cpp
+	<iostream>
+
