@@ -1,6 +1,6 @@
 #include "No.h"
-#include <stdlib.h>
-#include <iostream>
+#include "Arvore.h"
+
 
 Arvore::Arvore(int tamanho)
 {
@@ -12,5 +12,11 @@ Arvore::~Arvore()
     this->raiz->~No();
     delete this->raiz;
 }
+
+void Arvore::incluir(Elemento* e)
+{
+    this->raiz->addElemento(e);
+}
+
 
 

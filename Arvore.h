@@ -3,7 +3,6 @@
 #include "No.h"
 #include <stdlib.h>
 #include <iostream>
-using namespace std;
 class Arvore
 {
     public:
