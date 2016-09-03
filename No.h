@@ -16,11 +16,12 @@ class No
         void setPonteiro(unsigned int i, No* n);
 
         bool addElemento(Elemento* e);
-        bool excluirElemento(Elemento* e);
+        bool excluirElemento(Elemento* e) throw();
 
         unsigned int getQtdElemento() const;
         unsigned int getQtdMax() const;
         bool isCompleto() const;
+        bool existe(Elemento* e);
         int getIndex(Elemento* e) const;
 
 
@@ -34,7 +35,9 @@ class No
      void alocaVetElemento(int q);
      void alocaVetPonteiro(int q);
      void ordenarVetElemento();
-     bool verificaInclusao(Elemento* e);
+
+     int qualNo(Elemento* e);
+     int whereNo(Elemento* e);
 };
 
 #endif

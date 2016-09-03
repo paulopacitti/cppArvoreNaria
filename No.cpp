@@ -45,63 +45,92 @@ void No::setPonteiro(unsigned int i, No* n)
      this->vetPonteiro[i] = n;
  }
 
-bool No::verificaInclusao(Elemento* e)
-{
-    bool retorno = true;
-
-    for(int i=0; i < (this->qtdMax - 1); i++)
-    {
-        switch(this->vetElemento[i]->compareTo(e))
-        {
-            case 0:     retorno = false;
-                        break;
-        }
-    }
-    return retorno;
-}
-
-
-bool No::addElemento(Elemento* e) // Incompleto!!!!
-{
+int No::qualNo(Elemento* e) // busca o index de inserção, seja a do vetor de elementos
+{                                     // ou do vetor de ponteiros
+    bool achou = false;
     int index = 0;
-    bool retorno = false;
 
-    if(this->isCompleto())
-        return false;
+    if(this->vetElemento[qtdMax]->compareTo(e) == -1)
+        return qtdMax;
     else
-        if(!this->verificaInclusao(e))
-            return false;
+        if(this->vetElemento[0]->compareTo(e) == 1)
+            return 0;
         else
         {
-            this->setElemento((qtdMax -1), e);
-            this->ordenarVetElemento();
-            this->qtdElemento++;
-            return true;
+            for(int i=0;i < qtdMax-1;i++)
+            {
+                  if(this->vetElemento[index]->compareTo(e) == 1)
+                        return index -1;
+            }
         }
+        return -1;
 }
 
- bool No::excluirElemento(Elemento* e) // Incompleto!!!
+void No::addElemento(Elemento* e)
+{
+    int index = -1;
+    bool retorno = false;
+
+    if(!this->isCompleto())
+    {
+        this->setElemento((qtdMax-1), e);
+        this->ordenarVetElemento();
+    }
+    else
+    {
+        index = this->verificaInclusao(e);
+        this->vetPonteiro[index + 1]->addElemento(e);
+    }
+
+}
+
+void No::excluirElemento(Elemento* e) throw()
  {
-     int index;
+    if(this->existe())
+    {
+        int index = -1;
 
-     if(!this->verificaInclusao(e))
-        return false;
-     else
-     {
-         for(int i=0; i < (this->qtdMax-1); i++)
-         {
-             if(this->vetElemento[i]->compareTo(e) == 0)
-                index = i;
-         }
-         this->vetElemento[index] == NULL;
-         this->ordenarVetElemento();
-         this-qtdElemento--;
-         return true;
-     }
+        // verificar se existe nesse no
+        for(int i=0;i < qtdMax-1;i++)
+        {
+            if(this->vetElemento[i]->compareTo(e) == 0)
+                this->setElemento(i, e)
+        }
 
-
+        // tá em outro nó
+        index = qualNo(e);
+        if(index == -1)
+            return false;
+        else
+            this->vetPonteiro[index]->excluirElemento(e);
+    }
+    else
+        throw "Elemento não existe na árvore";
  }
 
+bool No::existe(Elemento* e)
+{
+    int index = -1;
+
+    // verificar se existe nesse no
+    for(int i=0;i < qtdMax-1;i++)
+    {
+         if(this->vetElemento[i]->compareTo(e) == 0)
+            return true;
+    }
+
+    // tá em outro nó
+    index = qualNo(e);
+    if(index == -1)
+        return false;
+    else
+        this->vetPonteiro[index]->existe(e);
+}
+
+int No::whereNoExiste(Elemento* e)
+{
+
+}
 bool No::isCompleto() const
 {
     if(vetElemento[(qtdMax-1)] == NULL)
