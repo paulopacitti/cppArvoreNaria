@@ -45,7 +45,7 @@ void No::setPonteiro(unsigned int i, No* n)
      this->vetPonteiro[i] = n;
  }
 
-int No::verificaInclusao(Elemento* e) // busca o index de inserção, seja a do vetor de elementos
+int No::qualNo(Elemento* e) // busca o index de inserção, seja a do vetor de elementos
 {                                     // ou do vetor de ponteiros
     bool achou = false;
     int index = 0;
@@ -58,11 +58,10 @@ int No::verificaInclusao(Elemento* e) // busca o index de inserção, seja a do 
         else
         {
             for(int i=0;i < qtdMax-1;i++)
-                if(this->vetElemento[index]->compareTo(e) == 1)
-                {
-                    if(this->vetElemento[index+1]->compareTo(e) == -1)
-                        return index;
-                }
+            {
+                  if(this->vetElemento[index]->compareTo(e) == 1)
+                        return index -1;
+            }
         }
         return -1;
 }
@@ -85,12 +84,53 @@ void No::addElemento(Elemento* e)
 
 }
 
- bool No::excluirElemento(Elemento* e)
+void No::excluirElemento(Elemento* e) throw()
  {
+    if(this->existe())
+    {
+        int index = -1;
 
+        // verificar se existe nesse no
+        for(int i=0;i < qtdMax-1;i++)
+        {
+            if(this->vetElemento[i]->compareTo(e) == 0)
+                this->setElemento(i, e)
+        }
 
+        // tá em outro nó
+        index = qualNo(e);
+        if(index == -1)
+            return false;
+        else
+            this->vetPonteiro[index]->excluirElemento(e);
+    }
+    else
+        throw "Elemento não existe na árvore";
  }
 
+bool No::existe(Elemento* e)
+{
+    int index = -1;
+
+    // verificar se existe nesse no
+    for(int i=0;i < qtdMax-1;i++)
+    {
+         if(this->vetElemento[i]->compareTo(e) == 0)
+            return true;
+    }
+
+    // tá em outro nó
+    index = qualNo(e);
+    if(index == -1)
+        return false;
+    else
+        this->vetPonteiro[index]->existe(e);
+}
+
+int No::whereNoExiste(Elemento* e)
+{
+
+}
 bool No::isCompleto() const
 {
     if(vetElemento[(qtdMax-1)] == NULL)

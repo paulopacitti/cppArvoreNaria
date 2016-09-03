@@ -7,10 +7,9 @@ class Arvore
 {
     public:
         Arvore(int tamanho) throw();
-        No* raiz;
         virtual ~Arvore();
         void incluir(Elemento* e)throw();
-        bool excluir(Elemento* e) throw();
+        void excluir(Elemento* e) throw();
         void printArvore() throw();
         friend std::ostream& operator<< (std::ostream& saida, Arvore a); //printa a árvore com cout<<arvore
 
