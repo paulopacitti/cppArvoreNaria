@@ -5,8 +5,12 @@
 
 Arvore::Arvore(int tamanho) throw()
 {
-    if(int tamanho > 0)
+    if(tamanho > 0)
+    {
         this->raiz = new No(tamanho);
+        this->n = tamanho;
+    }
+
     else
         throw "Tamanho tem que ser maior que 0";
 }
@@ -17,21 +21,22 @@ Arvore::~Arvore()
     delete this->raiz;
 }
 
-void Arvore::incluir(Elemento* e)
+void Arvore::incluir(Elemento* e) throw()
 {
-    this->raiz->addElemento(e);
+    this->raiz->incluir(e);
 }
 
-void Arvore::excluir(Elemento* e)
+void Arvore::excluir(Elemento* e) throw()
 {
     try
     {
-        this->raiz->excluirElemento(e);
+        this->raiz->excluir(e);
     }
-    catch
+    catch(void* e)
     {
-        cout << "Arvore não existe";
+         std::cout << "Arvore não existe";
     }
+
 }
 
 

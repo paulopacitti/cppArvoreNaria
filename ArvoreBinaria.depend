@@ -15,3 +15,17 @@
 1472685310 source:c:\users\user\documents\github\cpparvorenaria\main.cpp
 	<iostream>
 
+1473811762 source:c:\users\user\documents\github\cpparvorenaria\arvore.cpp
+	"No.h"
+	"Arvore.h"
+	<iostream>
+
+1473814198 c:\users\user\documents\github\cpparvorenaria\no.h
+	"Elemento.h"
+	<stdlib.h>
+
+1473811064 c:\users\user\documents\github\cpparvorenaria\arvore.h
+	"No.h"
+	<stdlib.h>
+	<iostream>
+

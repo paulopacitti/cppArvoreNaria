@@ -25,7 +25,7 @@ No::~No()
     delete vetPonteiro;
 }
 
- Elemento* No::getElemento(unsigned int index) const
+ Elemento* No::getElemento(unsigned int index)
  {
     return this->vetElemento[index];
  }
@@ -35,7 +35,7 @@ No::~No()
      vetElemento[index] = e;
  }
 
- No* No::getPonteiro(unsigned int index) const//retorna o pr�ximo elemento
+ No* No::getPonteiro(unsigned int index)
  {
     return this->vetPonteiro[index];
  }
@@ -50,26 +50,25 @@ int No::qualNo(Elemento* e) // busca o index de inserção, seja a do vetor de e
     bool achou = false;
     int index = 0;
 
-    if(this->vetElemento[qtdMax]->compareTo(e) == -1)
-        return qtdMax;
+    if(this->vetElemento[qtdMax-1]->compareTo(e) == -1)
+        return qtdMax + 1;
     else
         if(this->vetElemento[0]->compareTo(e) == 1)
             return 0;
         else
         {
-            for(int i=0;i < qtdMax-1;i++)
+            for(int i=0;i < qtdMax;i++)
             {
-                  if(this->vetElemento[index]->compareTo(e) == 1)
-                        return index -1;
+                  if(this->vetElemento[i]->compareTo(e) == 1)
+                        return index;
             }
         }
         return -1;
 }
 
-void No::addElemento(Elemento* e)
+void No::incluir(Elemento* e)
 {
     int index = -1;
-    bool retorno = false;
 
     if(!this->isCompleto())
     {
@@ -78,15 +77,22 @@ void No::addElemento(Elemento* e)
     }
     else
     {
-        index = this->verificaInclusao(e);
-        this->vetPonteiro[index + 1]->addElemento(e);
+        index = this->qualNo(e);
+        if(this->vetPonteiro[index] == NULL)
+        {
+            No* novoNo = new No(qtdMax);
+            this->vetPonteiro[index] = novoNo;
+            this->vetPonteiro[index]->incluir(e);
+        }
+        else
+            this->vetPonteiro[index]->incluir(e);
     }
 
 }
 
-void No::excluirElemento(Elemento* e) throw()
+void No::excluir(Elemento* e) throw()
  {
-    if(this->existe())
+    if(this->existe(e))
     {
         int index = -1;
 
@@ -94,15 +100,15 @@ void No::excluirElemento(Elemento* e) throw()
         for(int i=0;i < qtdMax-1;i++)
         {
             if(this->vetElemento[i]->compareTo(e) == 0)
-                this->setElemento(i, e)
+                this->setElemento(i, e);
         }
 
         // tá em outro nó
         index = qualNo(e);
         if(index == -1)
-            return false;
+            return;
         else
-            this->vetPonteiro[index]->excluirElemento(e);
+            this->vetPonteiro[index]->excluir(e);
     }
     else
         throw "Elemento não existe na árvore";
@@ -113,7 +119,7 @@ bool No::existe(Elemento* e)
     int index = -1;
 
     // verificar se existe nesse no
-    for(int i=0;i < qtdMax-1;i++)
+    for(int i=0;i < qtdMax;i++)
     {
          if(this->vetElemento[i]->compareTo(e) == 0)
             return true;
@@ -127,10 +133,29 @@ bool No::existe(Elemento* e)
         this->vetPonteiro[index]->existe(e);
 }
 
-int No::whereNoExiste(Elemento* e)
+Elemento* No::pesquisar(Elemento* e) throw()
 {
+    int index = -1;
 
+    if(this->existe(e))
+    {
+        for(int i=0;i < qtdMax;i++)
+        {
+            if(this->vetElemento[i]->compareTo(e) == 0)
+                this->vetElemento[i];
+        }
+
+    // tá em outro nó
+        index = qualNo(e);
+        if(index == -1)
+            throw "Nó não existe";
+        else
+            this->vetPonteiro[index]->existe(e);
+    }
+    else
+        throw "Nó não existe";
 }
+
 bool No::isCompleto() const
 {
     if(vetElemento[(qtdMax-1)] == NULL)
