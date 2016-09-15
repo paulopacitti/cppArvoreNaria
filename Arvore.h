@@ -15,16 +15,17 @@ class Arvore
 
     private:
         No* raiz;
-        int tamanho;
+        int n;
+
         void incluirAux(No* raiz, Elemento* e) throw();
-        bool isFolha(No* raiz) const throw();
+        bool isFolha(No* raiz); // ver se o nó não possuí ramos
         No* pesquisar(No* raiz, No** ant, Elemento* e) const throw();
         void limpaArvoreAux(No* raiz) throw();
         No* getMaisPerto(No* raiz, Elemento* e) throw();
         void printArvoreAux(No* raiz) throw();
         No* rearranja(No* raiz, No* origem, unsigned int i, unsigned int atual) throw();
         bool excluirAux(No* raiz, Elemento* e) throw();
-        std::ostream& auxPrint(ostream& saida, No* raiz) throw();
+        friend std::ostream& operator<< (std::ostream& saida, Arvore a);
 };
 
 extern std::ostream& operator<< (std::ostream& saida, Arvore a); //indica que esta função está solta no cpp

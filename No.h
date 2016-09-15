@@ -6,17 +6,17 @@
 class No
 {
     public:
-        No(int qtdElementoPorNo); //tamanho do vetor de Elemento, lembrando que o vetor de ponteiros é sempre uma posição maior
-        virtual ~No(); //destrutor
+        No(int qtdElementoPorNo);
+        virtual ~No();
 
-        Elemento* getElemento(unsigned int index) const;//retorna a Elemento de uma determinada Elemento
+        Elemento* getElemento(unsigned int index);
         void setElemento(unsigned int index, Elemento* e);
-
-        No* getPonteiro(unsigned int index) const;//retorna o próximo elemento
+        No* getPonteiro(unsigned int index);
         void setPonteiro(unsigned int i, No* n);
 
-        bool addElemento(Elemento* e);
-        bool excluirElemento(Elemento* e) throw();
+        void incluir(Elemento* e);
+        void excluir(Elemento* e) throw();
+        Elemento* pesquisar(Elemento* e) throw();
 
         unsigned int getQtdElemento() const;
         unsigned int getQtdMax() const;
@@ -37,7 +37,6 @@ class No
      void ordenarVetElemento();
 
      int qualNo(Elemento* e);
-     int whereNo(Elemento* e);
 };
 
 #endif
