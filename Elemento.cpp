@@ -22,5 +22,5 @@ int Elemento::compareTo(Elemento* e)
 	if(this->valor < e->getValor())
 		return -1;
 	else
-		return -1;
+		return 0;
 }
