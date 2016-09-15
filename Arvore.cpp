@@ -39,5 +39,10 @@ void Arvore::excluir(Elemento* e) throw()
 
 }
 
+std::ostream& operator<< (std::ostream& saida, Arvore a)
+{
+
+}
+
 
 

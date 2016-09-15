@@ -12,17 +12,8 @@ No::No(int qtdElementoPorNo)
 
 No::~No()
 {
-    for(int i=0; i<(qtdMax-1); i++)
-    {
-        this->vetElemento[i] = NULL;
-    }
-    for(int i=0; i<(qtdMax); i++)
-    {
-        this->vetPonteiro[i] = NULL;
-    }
-
-    delete vetElemento;
-    delete vetPonteiro;
+    this->vetElemento = NULL;
+    this->vetPonteiro = NULL;
 }
 
  Elemento* No::getElemento(unsigned int index)
@@ -45,26 +36,16 @@ void No::setPonteiro(unsigned int i, No* n)
      this->vetPonteiro[i] = n;
  }
 
-int No::qualNo(Elemento* e) // busca o index de inserção, seja a do vetor de elementos
-{                                     // ou do vetor de ponteiros
-    bool achou = false;
-    int index = 0;
-
-    if(this->vetElemento[qtdMax-1]->compareTo(e) == -1)
-        return qtdMax + 1;
-    else
-        if(this->vetElemento[0]->compareTo(e) == 1)
-            return 0;
-        else
-        {
-            for(int i=0;i < qtdMax;i++)
-            {
-                  if(this->vetElemento[i]->compareTo(e) == 1)
-                        return index;
-            }
-        }
-        return -1;
+ unsigned int No::getQtdElemento() const
+{
+    return this->qtdElemento;
 }
+
+unsigned int No::getQtdMax() const
+{
+    return this->qtdMax;
+}
+
 
 void No::incluir(Elemento* e)
 {
@@ -142,7 +123,7 @@ Elemento* No::pesquisar(Elemento* e) throw()
         for(int i=0;i < qtdMax;i++)
         {
             if(this->vetElemento[i]->compareTo(e) == 0)
-                this->vetElemento[i];
+                return this->vetElemento[i];
         }
 
     // tá em outro nó
@@ -150,7 +131,7 @@ Elemento* No::pesquisar(Elemento* e) throw()
         if(index == -1)
             throw "Nó não existe";
         else
-            this->vetPonteiro[index]->existe(e);
+            this->vetPonteiro[index]->pesquisar(e);
     }
     else
         throw "Nó não existe";
@@ -164,34 +145,45 @@ bool No::isCompleto() const
         return true;
 }
 
+int No::qualNo(Elemento* e) // busca o index de inserção, seja a do vetor de elementos
+{                                     // ou do vetor de ponteiros
+    bool achou = false;
+    int index = 0;
+
+    if(this->vetElemento[qtdMax-1]->compareTo(e) == -1)
+        return qtdMax + 1;
+    else
+        if(this->vetElemento[0]->compareTo(e) == 1)
+            return 0;
+        else
+        {
+            for(int i=0;i < qtdMax;i++)
+            {
+                  if(this->vetElemento[i]->compareTo(e) == 1)
+                        return index;
+            }
+        }
+        return -1;
+}
+
 
 void No::ordenarVetElemento()
 {
     Elemento* iTemp = NULL;
-    for (int i = 0; i < (qtdMax -1); i++)
+     for(int i=this->qtdMax-1; i >= 1; i--)
     {
-        for (int j = i + 1; j <= (this->qtdMax -1); j++)
+        for(int j=0; j < i ; j++)
         {
-            if (this->vetElemento[j] < this->vetElemento[i])
+            if(this->vetElemento[j]->compareTo(this->vetElemento[j+1]) == 1)
             {
-                iTemp = this->vetElemento[i];
-                this->vetElemento[i] = this->vetElemento[j];
-                this->vetElemento[j] = iTemp;
+                iTemp = this->vetElemento[j];
+                this->vetElemento[j] = this->vetElemento[j+1];
+                this->vetElemento[j+1] = iTemp;
             }
         }
     }
 }
 
-
-unsigned int No::getQtdElemento() const
-{
-    return this->qtdElemento;
-}
-
-unsigned int No::getQtdMax() const
-{
-    return this->qtdMax;
-}
 
 int No::getIndex(Elemento* e) const
 {
@@ -209,7 +201,7 @@ void No::alocaVetElemento(int q)
 {
     this->vetElemento = new Elemento*[q];
 
-    for(int i=0; i<(q-1); i++)
+    for(int i=0; i<(q); i++)
     {
         this->vetElemento[i] = NULL;
     }
@@ -219,7 +211,7 @@ void No::alocaVetPonteiro(int q)
 {
     this->vetPonteiro = new No*[q];
 
-    for(int i=0; i<(q-1); i++)
+    for(int i=0; i<(q); i++)
     {
         this->vetPonteiro[i] = NULL;
     }

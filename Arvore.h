@@ -18,7 +18,7 @@ class Arvore
         int n;
 
         void incluirAux(No* raiz, Elemento* e) throw();
-        bool isFolha(No* raiz) const throw();
+        bool isFolha(No* raiz); // ver se o nó não possuí ramos
         No* pesquisar(No* raiz, No** ant, Elemento* e) const throw();
         void limpaArvoreAux(No* raiz) throw();
         No* getMaisPerto(No* raiz, Elemento* e) throw();
