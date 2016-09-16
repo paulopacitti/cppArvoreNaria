@@ -57,6 +57,7 @@
 	<iostream>
 	"Arvore.h"
 
+<<<<<<< HEAD
 1473958837 source:c:\users\u14191\documents\github\cpparvorenaria\no.cpp
 	"Elemento.h"
 	"No.h"
@@ -85,6 +86,9 @@
 	"Arvore.h"
 
 1473983106 source:g:\cotuca\6o semestre\tópicos em estruturas de dados\cpparvorenaria\no.cpp
+=======
+1473958206 source:c:\users\u14191\documents\github\cpparvorenaria\no.cpp
+>>>>>>> origin/master
 	"Elemento.h"
 	"No.h"
 

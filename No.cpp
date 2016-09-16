@@ -66,7 +66,10 @@ void No::incluir(Elemento* e)
         else
         {
             index = this->qualNo(e);
+<<<<<<< HEAD
             index--;
+=======
+>>>>>>> origin/master
             if(this->vetPonteiro[index] == NULL)
             {
                 No* novoNo = new No(qtdMax);
@@ -86,6 +89,7 @@ void No::excluir(Elemento* e) throw()
         int index = -1;
 
         // verificar se existe nesse no
+<<<<<<< HEAD
         for(int i=0;i < this->qtdElemento;i++)
         {
             if(this->vetElemento[i]->compareTo(e) == 0)
@@ -94,6 +98,15 @@ void No::excluir(Elemento* e) throw()
                     this->vetElemento[c] = this->vetElemento[c+1];
                 }
                 this->qtdElemento--;
+=======
+        for(int i=0;i < qtdElemento;i++)
+        {
+            if(this->vetElemento[i]->compareTo(e) == 0)
+            {
+                this->vetElemento[i] == NULL;
+                this->qtdElemento--;
+                this->ordenarVetElemento();
+>>>>>>> origin/master
                 return;
             }
         }
@@ -188,7 +201,11 @@ void No::ordenarVetElemento()
     {
         for(int j=i+1; j < aux ; j++)
         {
+<<<<<<< HEAD
             if(this->vetElemento[i]->compareTo(this->vetElemento[j]) == 1)
+=======
+            if(this->vetElemento[i]->compareTo(this->vetElemento[j]) == -1)
+>>>>>>> origin/master
             {
                 iTemp = this->vetElemento[j];
                 this->vetElemento[j] = this->vetElemento[j+1];

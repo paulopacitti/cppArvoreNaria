@@ -13,6 +13,7 @@ int main()
     Arvore a(tamanho);
     Elemento* e = new Elemento(0);
     Elemento* f = new Elemento(1);
+<<<<<<< HEAD
     Elemento* g = new Elemento(2);
     Elemento* h = new Elemento(3);
     Elemento* i = new Elemento(4);
@@ -21,6 +22,10 @@ int main()
     a.incluir(g);
     a.incluir(h);
     a.incluir(i);
+=======
+    a.incluir(e);
+    a.incluir(f);
+>>>>>>> origin/master
     a.excluir(e);
     a.excluir(f);
 
