@@ -53,12 +53,13 @@
 1473957420 source:c:\users\u14191\documents\github\cpparvorenaria\elemento.cpp
 	"Elemento.h"
 
-1473957824 source:c:\users\u14191\documents\github\cpparvorenaria\main.cpp
+1474041078 source:c:\users\u14191\documents\github\cpparvorenaria\main.cpp
 	<iostream>
 	"Arvore.h"
 
-<<<<<<< HEAD
-1473958837 source:c:\users\u14191\documents\github\cpparvorenaria\no.cpp
+1473957824 D
+
+1474041008 source:c:\users\u14191\documents\github\cpparvorenaria\no.cpp
 	"Elemento.h"
 	"No.h"
 
@@ -86,9 +87,8 @@
 	"Arvore.h"
 
 1473983106 source:g:\cotuca\6o semestre\tópicos em estruturas de dados\cpparvorenaria\no.cpp
-=======
-1473958206 source:c:\users\u14191\documents\github\cpparvorenaria\no.cpp
->>>>>>> origin/master
+
+1473958206 gin/master
 	"Elemento.h"
 	"No.h"
 

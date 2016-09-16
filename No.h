@@ -17,10 +17,12 @@ class No
         void incluir(Elemento* e);
         void excluir(Elemento* e) throw();
         Elemento* pesquisar(Elemento* e) throw();
+        void rearranjar();
 
         unsigned int getQtdElemento() const;
         unsigned int getQtdMax() const;
         bool isCompleto() const;
+        bool isFolha();
         bool existe(Elemento* e);
         int getIndex(Elemento* e) const;
 

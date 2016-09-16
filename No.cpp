@@ -66,10 +66,7 @@ void No::incluir(Elemento* e)
         else
         {
             index = this->qualNo(e);
-<<<<<<< HEAD
             index--;
-=======
->>>>>>> origin/master
             if(this->vetPonteiro[index] == NULL)
             {
                 No* novoNo = new No(qtdMax);
@@ -89,29 +86,36 @@ void No::excluir(Elemento* e) throw()
         int index = -1;
 
         // verificar se existe nesse no
-<<<<<<< HEAD
         for(int i=0;i < this->qtdElemento;i++)
         {
             if(this->vetElemento[i]->compareTo(e) == 0)
             {
-                for(int c = 0; c<qtdElemento; c++){
+                if(this->isFolha())
+                {
+                    for(int c = 0; c<qtdElemento; c++)
                     this->vetElemento[c] = this->vetElemento[c+1];
+                    this->qtdElemento--;
                 }
-                this->qtdElemento--;
-=======
-        for(int i=0;i < qtdElemento;i++)
-        {
-            if(this->vetElemento[i]->compareTo(e) == 0)
-            {
-                this->vetElemento[i] == NULL;
-                this->qtdElemento--;
-                this->ordenarVetElemento();
->>>>>>> origin/master
-                return;
+                else
+                {
+                    No* esq = vetElemento[i];
+                    No* dir = vetElemento[i+1];
+
+
+                    /*Descer até o menor possível à direita*/
+                    No* antDir = NULL;
+                    while (dir != NULL)
+                    {
+                        antDir = dir;
+                        fator
+                        dir = ve;
+                    }
+                }
             }
         }
         // tá em outro nó
         index = qualNo(e);
+        index--;
         if(index == -1)
             return;
         else
@@ -180,7 +184,7 @@ int No::qualNo(Elemento* e) // busca o index de inserção, seja a do vetor de e
         return qtdMax + 1;
     else
         if(this->vetElemento[0]->compareTo(e) == 1)
-            return 0;
+            return 1;
         else
         {
             for(int i=0;i < qtdMax;i++)
@@ -201,11 +205,7 @@ void No::ordenarVetElemento()
     {
         for(int j=i+1; j < aux ; j++)
         {
-<<<<<<< HEAD
             if(this->vetElemento[i]->compareTo(this->vetElemento[j]) == 1)
-=======
-            if(this->vetElemento[i]->compareTo(this->vetElemento[j]) == -1)
->>>>>>> origin/master
             {
                 iTemp = this->vetElemento[j];
                 this->vetElemento[j] = this->vetElemento[j+1];
@@ -213,6 +213,26 @@ void No::ordenarVetElemento()
             }
         }
     }
+}
+
+void No::rearranjar()
+{
+    while(!this->isCompleto())
+    {
+
+    }
+}
+
+bool No::isFolha()
+{
+    bool retorno = true;
+    for(int i=0; i <= qtdElemento; i++)
+    {
+        if(this->vetPonteiro[i] != NULL)
+            retorno = false;
+    }
+
+    return retorno;
 }
 
 
