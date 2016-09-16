@@ -34,3 +34,57 @@
 	"Elemento.h"
 	"No.h"
 
+1473950167 source:c:\users\u14191\documents\github\cpparvorenaria\arvore.cpp
+	"No.h"
+	"Arvore.h"
+	<iostream>
+
+1473950167 c:\users\u14191\documents\github\cpparvorenaria\no.h
+	"Elemento.h"
+	<stdlib.h>
+
+1473950167 c:\users\u14191\documents\github\cpparvorenaria\elemento.h
+
+1473950167 c:\users\u14191\documents\github\cpparvorenaria\arvore.h
+	"No.h"
+	<stdlib.h>
+	<iostream>
+
+1473957420 source:c:\users\u14191\documents\github\cpparvorenaria\elemento.cpp
+	"Elemento.h"
+
+1473957824 source:c:\users\u14191\documents\github\cpparvorenaria\main.cpp
+	<iostream>
+	"Arvore.h"
+
+1473958837 source:c:\users\u14191\documents\github\cpparvorenaria\no.cpp
+	"Elemento.h"
+	"No.h"
+
+1473950168 source:g:\cotuca\6o semestre\tópicos em estruturas de dados\cpparvorenaria\arvore.cpp
+	"No.h"
+	"Arvore.h"
+	<iostream>
+
+1473950168 g:\cotuca\6o semestre\tópicos em estruturas de dados\cpparvorenaria\no.h
+	"Elemento.h"
+	<stdlib.h>
+
+1473950168 g:\cotuca\6o semestre\tópicos em estruturas de dados\cpparvorenaria\elemento.h
+
+1473950168 g:\cotuca\6o semestre\tópicos em estruturas de dados\cpparvorenaria\arvore.h
+	"No.h"
+	<stdlib.h>
+	<iostream>
+
+1473957422 source:g:\cotuca\6o semestre\tópicos em estruturas de dados\cpparvorenaria\elemento.cpp
+	"Elemento.h"
+
+1473983322 source:g:\cotuca\6o semestre\tópicos em estruturas de dados\cpparvorenaria\main.cpp
+	<iostream>
+	"Arvore.h"
+
+1473983106 source:g:\cotuca\6o semestre\tópicos em estruturas de dados\cpparvorenaria\no.cpp
+	"Elemento.h"
+	"No.h"
+

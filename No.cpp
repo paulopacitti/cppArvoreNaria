@@ -51,22 +51,30 @@ void No::incluir(Elemento* e)
 {
     int index = -1;
 
-    if(!this->isCompleto())
+    if(this->qtdElemento == 0)
     {
-        this->setElemento((qtdMax-1), e);
-        this->ordenarVetElemento();
+        this->vetElemento[0] = e;
+        this->qtdElemento++;
     }
     else
-    {
-        index = this->qualNo(e);
-        if(this->vetPonteiro[index] == NULL)
+        if(!this->isCompleto())
         {
-            No* novoNo = new No(qtdMax);
-            this->vetPonteiro[index] = novoNo;
-            this->vetPonteiro[index]->incluir(e);
+            this->setElemento((qtdElemento), e);
+            this->qtdElemento++;
+            this->ordenarVetElemento();
         }
         else
-            this->vetPonteiro[index]->incluir(e);
+        {
+            index = this->qualNo(e);
+            index--;
+            if(this->vetPonteiro[index] == NULL)
+            {
+                No* novoNo = new No(qtdMax);
+                this->vetPonteiro[index] = novoNo;
+                this->vetPonteiro[index]->incluir(e);
+            }
+            else
+                this->vetPonteiro[index]->incluir(e);
     }
 
 }
@@ -78,12 +86,17 @@ void No::excluir(Elemento* e) throw()
         int index = -1;
 
         // verificar se existe nesse no
-        for(int i=0;i < qtdMax-1;i++)
+        for(int i=0;i < this->qtdElemento;i++)
         {
             if(this->vetElemento[i]->compareTo(e) == 0)
-                this->setElemento(i, e);
+            {
+                for(int c = 0; c<qtdElemento; c++){
+                    this->vetElemento[c] = this->vetElemento[c+1];
+                }
+                this->qtdElemento--;
+                return;
+            }
         }
-
         // tá em outro nó
         index = qualNo(e);
         if(index == -1)
@@ -100,7 +113,7 @@ bool No::existe(Elemento* e)
     int index = -1;
 
     // verificar se existe nesse no
-    for(int i=0;i < qtdMax;i++)
+    for(int i=0;i < this->qtdElemento;i++)
     {
          if(this->vetElemento[i]->compareTo(e) == 0)
             return true;
@@ -169,12 +182,13 @@ int No::qualNo(Elemento* e) // busca o index de inserção, seja a do vetor de e
 
 void No::ordenarVetElemento()
 {
+    int aux = this->qtdElemento;
     Elemento* iTemp = NULL;
-     for(int i=this->qtdMax-1; i >= 1; i--)
+    for(int i=0; i < aux;i++)
     {
-        for(int j=0; j < i ; j++)
+        for(int j=i+1; j < aux ; j++)
         {
-            if(this->vetElemento[j]->compareTo(this->vetElemento[j+1]) == 1)
+            if(this->vetElemento[i]->compareTo(this->vetElemento[j]) == 1)
             {
                 iTemp = this->vetElemento[j];
                 this->vetElemento[j] = this->vetElemento[j+1];
