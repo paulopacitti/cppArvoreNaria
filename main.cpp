@@ -20,5 +20,5 @@ int main()
     a.incluir(g);
     a.excluir(e);
     a.excluir(f);
-    a.excluir(g);
+   // a.excluir(g);
 }

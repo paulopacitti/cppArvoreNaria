@@ -33,7 +33,8 @@ class No
      unsigned int qtdElemento; //qtd de Elementos que o vetor realmente tem
      unsigned int qtdMax; //tamanho vetor
 
-
+     void excluirPosicao(int index) throw();
+     No* pesquisarNo(Elemento* e) throw();
      void alocaVetElemento(int q);
      void alocaVetPonteiro(int q);
      void ordenarVetElemento();
