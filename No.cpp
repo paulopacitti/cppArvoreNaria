@@ -1,5 +1,7 @@
 #include "Elemento.h"
 #include "No.h"
+#include <string>
+#include <iostream>
 
 
 No::No(int qtdElementoPorNo)
@@ -8,6 +10,14 @@ No::No(int qtdElementoPorNo)
     this->qtdElemento= 0;
     this->alocaVetElemento(qtdElementoPorNo); //aloca vetor de elementos
     this->alocaVetPonteiro(qtdElementoPorNo + 1); //aloca vetor de ponteiros
+}
+
+No::No(No* outro)
+{
+    this->qtdMax = outro->getQtdMax();
+    this->qtdElemento = outro->getQtdElemento();
+    this->vetElemento = outro->vetElemento;
+    this->vetPonteiro = outro->vetPonteiro;
 }
 
 No::~No()
@@ -97,10 +107,10 @@ void No::excluirPosicao(int index) throw() //excluí e rearranja
  {
         if(this->isFolha())
         {
-            for(int c = 0; c<qtdElemento; c++)
+            this->qtdElemento--;
+            for(int c = index; c < this->qtdElemento; c++)
                 this->vetElemento[c] = this->vetElemento[c+1];
 
-            this->qtdElemento--;
             return;
         }
         else
@@ -122,7 +132,7 @@ void No::excluirPosicao(int index) throw() //excluí e rearranja
             {
                 if(this->vetElemento[index] != NULL) // pega o maior elemento da esquerda
                 {
-                    this->vetElemento[index] = this->vetPonteiro[index]->vetElemento[this->vetPonteiro[index]->getQtdElemento()];
+                    this->vetElemento[index] = this->vetPonteiro[index]->vetElemento[(this->vetPonteiro[index]->getQtdElemento()) - 1];
 
                     this->vetPonteiro[index]->qtdElemento--;
                     if(this->vetPonteiro[index]->getQtdElemento() == 0)
@@ -250,12 +260,49 @@ void No::ordenarVetElemento()
     }
 }
 
-void No::rearranjar()
+std::ostream& No::toString(std::ostream& o)
 {
-    while(!this->isCompleto())
-    {
+    std::string novoNo = " ( ";
+    std::string aux = " ";
+     std::string aux1 = "";
 
+    if(this->qtdElemento == 0)
+    {
+        o << "";
+        return o;
     }
+    if(this->isFolha())
+    {
+        o << novoNo;
+        for(int i = 0; i<this->getQtdElemento(); i++)
+        {
+            o << this->vetElemento[i]->getValor();
+            o << aux;
+        }
+        o << ") ";
+    }
+    else
+    {
+        for(int i = 0; i<this->getQtdElemento(); i++)
+        {
+            if(this->vetPonteiro[i] != NULL)
+            {
+                this->vetPonteiro[i]->toString(o);
+            }
+
+            if(i == 0)
+                o << novoNo;
+
+            o << this->vetElemento[i]->getValor();
+            o << aux;
+            if(i == this->getQtdElemento() -1)
+                o << ") ";
+        }
+        if(this->vetPonteiro[this->getQtdElemento()] != NULL)
+            this->vetPonteiro[this->getQtdElemento()]->toString(o);
+    }
+
+    return o;
 }
 
 bool No::isFolha()
@@ -301,4 +348,11 @@ void No::alocaVetPonteiro(int q)
     {
         this->vetPonteiro[i] = NULL;
     }
+}
+
+No& No::operator=(const No& n)
+{
+    No* novo;
+    novo = new No(n);
+    return *novo;
 }

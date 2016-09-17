@@ -18,7 +18,7 @@ Arvore::Arvore(int tamanho) throw()
 Arvore::~Arvore()
 {
     this->raiz->~No();
-    delete this->raiz;
+    this->raiz = NULL;
 }
 
 void Arvore::incluir(Elemento* e) throw()
@@ -41,7 +41,8 @@ void Arvore::excluir(Elemento* e) throw()
 
 std::ostream& operator<< (std::ostream& saida, Arvore a)
 {
-
+    a.raiz->toString(saida);
+    return saida;
 }
 
 

@@ -2,11 +2,14 @@
 #define NO
 #include "Elemento.h"
 #include <stdlib.h>
+#include <iostream>
+#include <string>
 
 class No
 {
     public:
         No(int qtdElementoPorNo);
+        No(No* outro); // construtor de cópia
         virtual ~No();
 
         Elemento* getElemento(unsigned int index);
@@ -17,7 +20,8 @@ class No
         void incluir(Elemento* e);
         void excluir(Elemento* e) throw();
         Elemento* pesquisar(Elemento* e) throw();
-        void rearranjar();
+        std::ostream& toString(std::ostream& o);
+        No& operator=(const No& n);
 
         unsigned int getQtdElemento() const;
         unsigned int getQtdMax() const;
@@ -28,10 +32,10 @@ class No
 
 
     private:
-     Elemento** vetElemento; //são dois * porque é um vetor de ponteiro
-     No** vetPonteiro; //vetor de ponteiros
-     unsigned int qtdElemento; //qtd de Elementos que o vetor realmente tem
-     unsigned int qtdMax; //tamanho vetor
+     Elemento** vetElemento;
+     No** vetPonteiro;
+     unsigned int qtdElemento;
+     unsigned int qtdMax;
 
      void excluirPosicao(int index) throw();
      No* pesquisarNo(Elemento* e) throw();

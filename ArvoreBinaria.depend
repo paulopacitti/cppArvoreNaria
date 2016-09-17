@@ -12,27 +12,31 @@
 
 1473989349 c:\users\user\documents\github\cpparvorenaria\elemento.h
 
-1474121320 source:c:\users\user\documents\github\cpparvorenaria\main.cpp
+1474140364 source:c:\users\user\documents\github\cpparvorenaria\main.cpp
 	<iostream>
 	"Arvore.h"
 
-1473989349 source:c:\users\user\documents\github\cpparvorenaria\arvore.cpp
+1474137415 source:c:\users\user\documents\github\cpparvorenaria\arvore.cpp
 	"No.h"
 	"Arvore.h"
 	<iostream>
 
-1474119941 c:\users\user\documents\github\cpparvorenaria\no.h
+1474143200 c:\users\user\documents\github\cpparvorenaria\no.h
 	"Elemento.h"
 	<stdlib.h>
+	<iostream>
+	<string>
 
-1473989349 c:\users\user\documents\github\cpparvorenaria\arvore.h
+1474135260 c:\users\user\documents\github\cpparvorenaria\arvore.h
 	"No.h"
 	<stdlib.h>
 	<iostream>
 
-1474122671 source:c:\users\user\documents\github\cpparvorenaria\no.cpp
+1474143241 source:c:\users\user\documents\github\cpparvorenaria\no.cpp
 	"Elemento.h"
 	"No.h"
+	<string>
+	<iostream>
 
 1473950167 source:c:\users\u14191\documents\github\cpparvorenaria\arvore.cpp
 	"No.h"
